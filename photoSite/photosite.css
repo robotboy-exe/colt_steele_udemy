@@ -1,0 +1,41 @@
+nav {
+  font-family: "raleway", sans-serif;
+  text-transform: uppercase;
+  font-weight: 800;
+  border-bottom: 2px solid #f1f1f1;
+  width: 30%;
+  margin-left: calc(10%/6);
+  font-size: 1.5em;
+  padding: 1.2em 0;
+}
+/*
+// <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 900
+*/
+/*
+.raleway-headingFont {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+*/
+
+img {
+  width: 30%;
+  margin: calc(10%/6);
+}
+
+section {
+  background: yellow;
+/*  width :20%;
+  height: 10vh;*/
+}
+
+div{
+  display: inline-block;
+  background: red;
+  width: 30%;
+  height: 30vh;
+  margin: calc(10%/6);
+}
