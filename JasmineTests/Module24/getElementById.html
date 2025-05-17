@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Jasmine Test</title>
+  <link rel="stylesheet" href="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine.css">
+</head>
+<body>
+  <!-- Your testable HTML -->
+  <h1 id="mainheading">Hello World</h1>
+  <img id="unicorn" src="unicorn.png" alt="Unicorn">
+  <!-- Your testable HTML -->
+  
+  
+  <!-- Jasmine and your scripts -->
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine.js"></script>
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/boot0.js"></script>
+  <!-- Jasmine and your scripts -->
+  
+  
+  <!-- Your app code -->
+  <script>
+    const image = document.getElementById("unicorn");
+    const heading = document.getElementById("mainheading");
+  </script>
+  <!-- Your app code -->
+
+
+  <!-- Your test code -->
+  <script>
+    describe('the image variable', function() {
+      it('should be defined', function() {
+        expect(image).toBeDefined();
+      });
+      it('should refer to the image element with the id of "unicorn"', function() {
+        const myImage = document.getElementById("unicorn");
+        expect(image).toEqual(myImage);
+      });
+    });
+
+    describe('the heading variable', function() {
+      it('should be defined', function() {
+        expect(heading).toBeDefined('did not find a variable called heading');
+      });
+      it('should refer to the element with the id of "mainheading"', function() {
+        const myHeading = document.getElementById("mainheading");
+        expect(heading).toEqual(myHeading);
+      });
+    });
+  </script>
+    <!-- Your test code -->
+
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/boot1.js"></script>
+I </html>
