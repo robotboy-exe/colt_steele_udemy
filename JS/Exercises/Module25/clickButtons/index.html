@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Button Click Console Log Test</title>
+  <link rel="stylesheet" href="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine.css" />
+</head>
+<body>
+
+  <h1>Button Click Test</h1>
+  <p>Your goal is to set up two buttons so that when each one is clicked, a specific message appears in the console. One button should show "hello" and the other should show "goodbye". The test will check if clicking these buttons triggers the correct messages.</p>
+
+  <button id="hello">Hello</button>
+  <button id="goodbye">Goodbye</button>
+
+  <!-- Jasmine scripts -->
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine.js"></script>
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/boot0.js"></script>
+
+  <!-- Your solution code -->
+  <script src="app.js"></script>
+
+  <!-- Test code -->
+  <script>
+    describe('Button click messages', function() {
+      let consoleOutput = [];
+      const originalLog = console.log;
+
+      beforeAll(() => {
+        console.log = (msg) => consoleOutput.push(msg);
+      });
+
+      afterAll(() => {
+        console.log = originalLog;
+      });
+
+      beforeEach(() => {
+        consoleOutput = [];
+      });
+
+      it('should log "hello" when the Hello button is clicked', function() {
+        document.getElementById('hello').click();
+        expect(consoleOutput).toContain('hello');
+      });
+
+      it('should log "goodbye" when the Goodbye button is clicked', function() {
+        document.getElementById('goodbye').click();
+        expect(consoleOutput).toContain('goodbye');
+      });
+    });
+  </script>
+
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/boot1.js"></script>
+</body>
+</html>

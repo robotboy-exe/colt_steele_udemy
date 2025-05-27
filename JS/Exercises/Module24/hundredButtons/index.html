@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Button Generator</title>
+  <link rel="stylesheet" href="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine.css" />
+</head>
+<body>
+  <h1>Look At All My Buttons!</h1>
+  <div id="container"></div>
+
+  <!-- Jasmine -->
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine.js"></script>
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/boot0.js"></script>
+
+  <!-- Your script -->
+  <script src="app.js"></script>
+
+  <!-- Any test code goes here if needed -->
+  <script>
+    // Optional: Example test for reference
+    describe('Button Generation', function() {
+      it('should create 100 buttons inside #container', function() {
+        const buttons = document.querySelectorAll('#container button');
+        expect(buttons.length).toBe(100);
+      });
+    });
+  </script>
+
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/boot1.js"></script>
+</body>
+</html>

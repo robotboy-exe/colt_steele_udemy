@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Image Element Attribute Test</title>
+  <!-- Jasmine CSS for styling the test results -->
+  <link rel="stylesheet" href="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine.css" />
+</head>
+<body>
+  <!-- Image element to be tested and manipulated -->
+  <img />
+
+  <!-- Jasmine core scripts for running the tests -->
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine.js"></script>
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/boot0.js"></script>
+
+  <!-- Your app.js file where DOM manipulation happens -->
+  <script src="app.js"></script>
+
+  <!-- Jasmine test specs for the image element -->
+  <script>
+    describe('The Image Element', function() {
+      // Select the image element
+      const image = document.querySelector('img');
+
+      it('- Should still exist', function() {
+        expect(image).toBeDefined('did you remove the image element?');
+      });
+
+      it('- Should have the src of https://devsprouthosting.com/images/chicken.jpg', function() {
+        expect(image.src).toMatch('https://devsprouthosting.com/images/chicken.jpg');
+      });
+
+      it('- Should have the alt text of "chicken"', function() {
+        expect(image.alt).toMatch('chicken');
+      });
+    });
+  </script>
+
+  <!-- Jasmine boot script to start running the tests -->
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/boot1.js"></script>
+</body>
+</html>

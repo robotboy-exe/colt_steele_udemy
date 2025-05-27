@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Grocery List Submission Test</title>
+  <link rel="stylesheet" href="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine.css" />
+</head>
+<body>
+
+  <h1>Grocery List Form</h1>
+  <p>Your goal is to create a form where someone can type in a product name and the amount they want. When the form is sent, this information should appear as a new item in a list below. The test will check if items get added correctly to the list after submitting the form.</p>
+
+  <form>
+    <label>
+      Enter A Product
+      <input type="text" name="product" id="product"/>
+    </label>
+    <label>
+      Enter A Quantity
+      <input type="number" name="qty" id="qty"/>
+    </label>
+    <button type="submit" id="submit">Submit</button>
+  </form>
+
+  <ul id="list"></ul>
+
+  <!-- Jasmine scripts -->
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine.js"></script>
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/boot0.js"></script>
+
+  <!-- Your solution code -->
+  <script src="app.js"></script>
+
+  <!-- Test code -->
+  <script>
+    describe('Grocery List Form', function() {
+      let form, list;
+
+      beforeEach(() => {
+        form = document.querySelector('form');
+        list = document.getElementById('list');
+        list.innerHTML = '';
+        form.reset();
+      });
+
+      it('adds a new list item with quantity and product when the form is submitted', function() {
+        form.elements.product.value = 'Apples';
+        form.elements.qty.value = '4';
+
+        // Simulate form submission
+        const event = new Event('submit', { bubbles: true, cancelable: true });
+        form.dispatchEvent(event);
+
+        expect(list.children.length).toBe(1);
+        expect(list.children[0].textContent).toBe('4 Apples');
+      });
+
+      it('clears the form fields after submission', function() {
+        form.elements.product.value = 'Bananas';
+        form.elements.qty.value = '2';
+
+        const event = new Event('submit', { bubbles: true, cancelable: true });
+        form.dispatchEvent(event);
+
+        expect(form.elements.product.value).toBe('');
+        expect(form.elements.qty.value).toBe('');
+      });
+    });
+  </script>
+
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/boot1.js"></script>
+</body>
+</html>

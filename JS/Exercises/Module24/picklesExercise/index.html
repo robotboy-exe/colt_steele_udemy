@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Span Text Change Test</title>
+  <!-- Jasmine CSS for styling the test results -->
+  <link rel="stylesheet" href="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine.css" />
+</head>
+<body>
+  <!-- Original span content: Pickles Are Delicious -->
+  <span>Pickles Are Delicious</span>
+
+  <!-- Jasmine core scripts for running the tests -->
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine.js"></script>
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/boot0.js"></script>
+
+  <!-- Your app.js file where DOM manipulation happens -->
+  <script src="app.js"></script>
+
+  <!-- Jasmine test specs to verify the specific word change -->
+  <script>
+    describe('The Span Element', function() {
+      const span = document.querySelector('span');
+
+      it('should still exist', function() {
+        expect(span).toBeDefined();
+      });
+
+      it('should change only the word "Delicious" to "Disgusting"', function() {
+        expect(span.innerText).toBe('Pickles Are Disgusting');
+      });
+    });
+  </script>
+
+  <!-- Jasmine boot script to start running the tests -->
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/boot1.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Toggle Highlight Test</title>
+  <!-- Jasmine CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine.css" />
+  <!-- Your styles with .highlight class and li styles -->
+  <style>
+    li {
+  background-color: purple; /* Default purple background */
+}
+
+.highlight {
+  background-color: lightblue; /* Light blue background when highlighted */
+}
+  </style>
+</head>
+<body>
+  <ul>
+    <li>Hello</li>
+    <li>Hello</li>
+    <li>Hello</li>
+    <li>Hello</li>
+    <li>Hello</li>
+    <li>Hello</li>
+  </ul>
+
+  <!-- Jasmine JS setup -->
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine.js"></script>
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/boot0.js"></script>
+
+  <!-- Your JavaScript logic -->
+  <script src="app.js"></script>
+
+  <!-- Jasmine test suite -->
+  <script>
+    describe('List Items Highlight Toggle', function() {
+      const lis = document.querySelectorAll('li');
+
+      it('should have 6 list items', function() {
+        expect(lis.length).toBe(6);
+      });
+
+      it('each list item should have the "highlight" class toggled on', function() {
+        lis.forEach(li => {
+          expect(li.classList.contains('highlight')).toBeTrue();
+        });
+      });
+    });
+  </script>
+
+  <!-- Jasmine boot loader -->
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/boot1.js"></script>
+</body>
+</html>

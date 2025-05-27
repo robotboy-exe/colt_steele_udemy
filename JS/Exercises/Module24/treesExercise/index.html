@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Image & Container Style Test</title>
+  <!-- Jasmine CSS for styling the test results -->
+  <link rel="stylesheet" href="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine.css" />
+</head>
+<body>
+  <!-- A heading or text to show the initial content -->
+  <h1>I ♥ Trees</h1>
+
+  <!-- Container that should be centered -->
+  <div id="container">
+    <!-- Image whose styles will be modified -->
+    <img />
+  </div>
+
+  <!-- Jasmine core scripts for running the tests -->
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine.js"></script>
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/boot0.js"></script>
+
+  <!-- Your app.js file where DOM manipulation happens -->
+  <script src="app.js"></script>
+
+  <!-- Jasmine test specs for the image and container styles -->
+  <script>
+    describe('The Image & Container Styles', function() {
+      // Select the image element
+      const image = document.querySelector('img');
+      // Select the container element
+      const container = document.querySelector('#container');
+
+      it('should find the image element', function() {
+        expect(image).toBeDefined('did you remove the <img> element?');
+      });
+
+      it('should set the image width to 150px', function() {
+        expect(image.style.width).toBe('150px');
+      });
+
+      it('should set the image borderRadius to 50%', function() {
+        expect(image.style.borderRadius).toBe('50%');
+      });
+
+      it('should find the container element', function() {
+        expect(container).toBeDefined('did you remove the #container element?');
+      });
+
+      it('should center-align the container text', function() {
+        expect(container.style.textAlign).toBe('center');
+      });
+    });
+  </script>
+
+  <!-- Jasmine boot script to start running the tests -->
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/boot1.js"></script>
+</body>
+</html>

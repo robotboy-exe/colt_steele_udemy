@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rainbow Text Test</title>
+  <!-- Jasmine CSS for test result styling -->
+  <link rel="stylesheet" href="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine.css" />
+</head>
+<body>
+  <!-- Each letter of "RAINBOW" in a separate span -->
+  <span>R</span>
+  <span>A</span>
+  <span>I</span>
+  <span>N</span>
+  <span>B</span>
+  <span>O</span>
+  <span>W</span>
+
+  <!-- Jasmine scripts for test runner -->
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine.js"></script>
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/boot0.js"></script>
+
+  <!-- Your app.js file with the DOM logic -->
+  <script src="app.js"></script>
+
+  <!-- Jasmine test for verifying the rainbow coloring -->
+  <script>
+    describe('Rainbow Span Colors', function() {
+      const spans = document.querySelectorAll('span');
+      const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+
+      it('should have exactly 7 spans', function() {
+        expect(spans.length).toBe(7);
+      });
+
+      it('each span should be colored according to the rainbow order', function() {
+        for (let i = 0; i < spans.length; i++) {
+          expect(spans[i].style.color).toBe(colors[i]);
+        }
+      });
+    });
+  </script>
+
+  <!-- Final Jasmine boot script to run the tests -->
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/boot1.js"></script>
+</body>
+</html>

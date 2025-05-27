@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Jasmine Test</title>
+  <link rel="stylesheet" href="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine.css">
+</head>
+<body>
+  <!-- Your testable HTML -->
+  <h1>Todo List</h1>
+
+<ul>
+  <li class="done">Buy groceries</li>
+  <li>Walk the dog</li>
+  <li class="done">Read a book</li>
+  <li>Write code</li>
+  <li class="done">Clean the house</li>
+</ul>
+
+<form>
+  <input type="text" placeholder="Add new todo" />
+  <input type="checkbox" />
+  <input type="radio" name="priority" value="high" />
+  <input type="radio" name="priority" value="low" />
+</form>
+  <!-- Your testable HTML -->
+  
+  
+  <!-- Jasmine and your scripts -->
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine.js"></script>
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/boot0.js"></script>
+  
+  
+  <!-- Your app code -->
+  <script>
+    const doneTodos = document.querySelectorAll('.done')
+    const checkbox = document.querySelector("input[type='checkbox']")
+  </script>
+
+
+  <!-- Your test code -->
+  <script>
+  describe('the doneTodos variable', function() {
+    it('should be defined', function() {
+        expect(doneTodos).toBeDefined('could not find it!');
+    });
+    it('should be a NodeList (what querySelectorAll returns)', function() {
+        expect(doneTodos instanceof NodeList).toBe(true);
+    });
+    
+    it('should contain all the elements with class of "done"', function() {
+        const myDoneTodos = document.querySelectorAll('.done');
+        expect(doneTodos.length).toBe(myDoneTodos.length, `doneTodos length is not the expected length of ${myDoneTodos.length}`);
+        for(let todo of myDoneTodos) {
+            expect(doneTodos).toContain(todo);
+        }
+    })
+});
+describe('the checkbox variable', function() {
+    it('should be defined', function() {
+        expect(checkbox).toBeDefined('could not find it!');
+    });
+    
+    it('should be an Element (what querySelector returns)', function() {
+        expect(checkbox instanceof Element).toBe(true);
+    });
+    
+    it('should hold the input with type of checkbox', function() {
+        expect(checkbox.type).toBe('checkbox','expected the input type to be checkbox');
+        const myCheckbox = document.querySelector('input[type="checkbox"]');
+        expect(checkbox).toBe(myCheckbox);
+    });
+    
+    
+});
+  </script>
+  
+  
+    <!-- Jasmine boot1-->
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/boot1.js"></script>
+</body>
+</html>

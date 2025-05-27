@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Inline Events Suck</title>
+  <link rel="stylesheet" href="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine.css" />
+</head>
+<body>
+  <h1>Inline Events Suck...</h1>
+  <button id="click-me">Click Me</button>
+
+  <!-- Jasmine libraries -->
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine.js"></script>
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/boot0.js"></script>
+
+  <!-- Your external JS file -->
+  <script src="app.js"></script>
+
+  <!-- Test Code -->
+  <script>
+  describe("Button click behavior", function () {
+    let button;
+
+    beforeEach(function (done) {
+      // Wait for DOMContentLoaded and event listeners to be ready
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", () => {
+          button = document.getElementById("click-me");
+          done();
+        });
+      } else {
+        button = document.getElementById("click-me");
+        done();
+      }
+    });
+
+    it("should change the button text when clicked", function () {
+      // Simulate user click only inside the test
+      button.click();
+      expect(button.innerText).not.toBe("Click Me");
+    });
+  });
+</script>
+
+  <!-- Final Jasmine boot script -->
+  <script src="https://unpkg.com/jasmine-core/lib/jasmine-core/boot1.js"></script>
+</body>
+</html>
